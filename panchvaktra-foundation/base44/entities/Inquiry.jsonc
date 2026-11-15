@@ -1,0 +1,90 @@
+{
+  "name": "Inquiry",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "title": "Full name"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email address"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone number"
+    },
+    "inquiry_type": {
+      "type": "string",
+      "title": "Inquiry type",
+      "enum": [
+        "General inquiry",
+        "Volunteer opportunities",
+        "Donation and sponsorship",
+        "Request for assistance",
+        "Partnership and collaboration",
+        "Programs and events",
+        "Other"
+      ],
+      "enumColors": [
+        "gray",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "pink",
+        "gray"
+      ]
+    },
+    "organization": {
+      "type": "string",
+      "title": "Organization"
+    },
+    "subject": {
+      "type": "string",
+      "title": "Subject"
+    },
+    "message": {
+      "type": "string",
+      "title": "Message"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "enum": [
+        "new",
+        "read",
+        "responded"
+      ],
+      "enumColors": [
+        "blue",
+        "yellow",
+        "green"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "message"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

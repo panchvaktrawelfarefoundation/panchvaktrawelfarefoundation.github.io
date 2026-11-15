@@ -1,0 +1,99 @@
+{
+  "name": "VolunteerApplication",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "title": "Full name"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email address"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone number"
+    },
+    "area_of_interest": {
+      "type": "string",
+      "title": "Area of interest",
+      "enum": [
+        "Child education and tutoring",
+        "Healthcare and first aid",
+        "Food and nutrition drives",
+        "Shelter and displaced family relief",
+        "Mentorship and sports",
+        "Community outreach and admin"
+      ],
+      "enumColors": [
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "pink",
+        "gray"
+      ]
+    },
+    "availability": {
+      "type": "string",
+      "title": "Availability",
+      "enum": [
+        "Weekends (part-time)",
+        "Weekday evenings",
+        "Full-time",
+        "Flexible / remote"
+      ],
+      "enumColors": [
+        "blue",
+        "yellow",
+        "green",
+        "purple"
+      ]
+    },
+    "background": {
+      "type": "string",
+      "title": "Background or experience"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "enum": [
+        "new",
+        "reviewed",
+        "contacted",
+        "onboarded"
+      ],
+      "enumColors": [
+        "blue",
+        "yellow",
+        "purple",
+        "green"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "area_of_interest",
+    "availability"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

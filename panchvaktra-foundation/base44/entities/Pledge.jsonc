@@ -1,0 +1,83 @@
+{
+  "name": "Pledge",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "title": "Full name"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email address"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone number"
+    },
+    "amount": {
+      "type": "number",
+      "title": "Pledged amount (INR)"
+    },
+    "cause": {
+      "type": "string",
+      "title": "Designated cause",
+      "enum": [
+        "Child education and school supplies",
+        "Daily nutrition and healthy food",
+        "Displaced families relief",
+        "Healthcare and emergency medical aid",
+        "General humanitarian fund"
+      ],
+      "enumColors": [
+        "blue",
+        "yellow",
+        "purple",
+        "green",
+        "gray"
+      ]
+    },
+    "note": {
+      "type": "string",
+      "title": "Note or dedication"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "enum": [
+        "pledged",
+        "contacted",
+        "received"
+      ],
+      "enumColors": [
+        "yellow",
+        "blue",
+        "green"
+      ],
+      "default": "pledged"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "amount",
+    "cause"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

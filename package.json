@@ -1,0 +1,10 @@
+{
+  "name": "panchvaktra-foundation-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix panchvaktra-foundation",
+    "build": "npm run build --prefix panchvaktra-foundation",
+    "preview": "npm run preview --prefix panchvaktra-foundation",
+    "start": "npm run dev --prefix panchvaktra-foundation"
+  }
+}
