@@ -43,7 +43,7 @@ jobs:
               else if (/\.(html|js|css)$/.test(p)) {
                 let c = fs.readFileSync(p, "utf8");
                 c = c.replace(/(src|href|url)\s*([=:(])\s*(["\x27])\/(?!\/|panchvaktrawelfarefoundation\/)/g, "$1$2$3/panchvaktrawelfarefoundation/");
-                c = c.replace(/(["\x27])\/(?!\/|panchvaktrawelfarefoundation\/)([^"\x27\s]+\.(?:png|jpg|jpeg|webp|svg|gif|ico))/gi, "$1/panchvaktrawelfarefoundation/$2");
+                c = c.replace(/(["\x27])\/(?!\/|panchvaktrawelfarefoundation\/)([^"\x27]+\.(?:png|jpg|jpeg|webp|svg|gif|ico))/gi, "$1/panchvaktrawelfarefoundation/$2");
                 fs.writeFileSync(p, c);
               }
             }
