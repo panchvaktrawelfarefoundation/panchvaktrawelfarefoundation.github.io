@@ -32,9 +32,23 @@ jobs:
       - name: Build project
         run: npm run build
       - name: Fix asset paths for subfolder
-        run: |
-          find dist -type f \( -name "*.html" -o -name "*.js" -o -name "*.css" \) -exec sed -i -E 's|(src|href)="/([^/])|\1="/panchvaktrawelfarefoundation/\2|g' {} +
-          find dist -type f \( -name "*.html" -o -name "*.js" -o -name "*.css" \) -exec sed -i 's|/panchvaktrawelfarefoundation/panchvaktrawelfarefoundation/|/panchvaktrawelfarefoundation/|g' {} +
+        run: >
+          node -e '
+          const fs = require("fs");
+          const path = require("path");
+          function walk(dir) {
+            for (const f of fs.readdirSync(dir)) {
+              const p = path.join(dir, f);
+              if (fs.statSync(p).isDirectory()) walk(p);
+              else if (/\.(html|js|css)$/.test(p)) {
+                let c = fs.readFileSync(p, "utf8");
+                c = c.replace(/(src|href|url)\s*([=:(])\s*(["\x27])\/(?!\/|panchvaktrawelfarefoundation\/)/g, "$1$2$3/panchvaktrawelfarefoundation/");
+                fs.writeFileSync(p, c);
+              }
+            }
+          }
+          walk("dist");
+          '
       - name: Prepare static fallback
         run: cp dist/client/index.html dist/client/404.html || cp dist/index.html dist/404.html
       - name: Upload artifact
