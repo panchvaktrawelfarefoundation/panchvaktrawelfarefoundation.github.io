@@ -19,7 +19,7 @@ const { dependencies } = JSON.parse(readFileSync(new URL("./package.json", impor
 const PREBUNDLE = Object.keys(dependencies).filter((name) => !NOT_PREBUNDLED.has(name) && !name.startsWith("@base44/"));
 
 export default defineConfig({
-  base: "/panchvaktrawelfarefoundation/",
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
