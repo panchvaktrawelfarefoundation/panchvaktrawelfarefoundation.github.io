@@ -1,7 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { cloudflare } from "@cloudflare/vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -20,21 +19,23 @@ const { dependencies } = JSON.parse(readFileSync(new URL("./package.json", impor
 const PREBUNDLE = Object.keys(dependencies).filter((name) => !NOT_PREBUNDLED.has(name) && !name.startsWith("@base44/"));
 
 export default defineConfig({
+  base: "/panchvaktrawelfarefoundation/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
   optimizeDeps: { include: PREBUNDLE },
-  environments: {
-    ssr: {
-      optimizeDeps: { include: PREBUNDLE },
-      build: { sourcemap: true, rolldownOptions: { output: { sourcemapExcludeSources: true } } },
-    },
-  },
   plugins: [
-    cloudflare({ viteEnvironment: { name: "ssr" }, inspectorPort: false }),
-    tanstackStart({ srcDirectory: "src" }),
+    tanstackStart({
+      srcDirectory: "src",
+      spa: {
+        enabled: true,
+        prerender: {
+          outputPath: "/index.html",
+        },
+      },
+    }),
     react(),
   ],
 });
