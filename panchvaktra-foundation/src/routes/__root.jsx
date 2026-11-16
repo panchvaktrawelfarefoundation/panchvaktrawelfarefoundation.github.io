@@ -17,11 +17,16 @@ export const Route = createRootRoute({
         name: "google-site-verification",
         content: "RHD3Qoq_5IwT7z8_bgMvftQfC00x-UMw7QkpD-980tc",
       },
-      { title: "Panchvaktra Human Welfare Foundation" },
+      { title: "Panchvaktra Human Welfare Foundation | panchvaktrawelfarefoundation" },
       {
         name: "description",
         content:
-          "Serving humanity, creating hope — the Panchvaktra Human Welfare Foundation supports underprivileged children and families across India.",
+          "Official website of Panchvaktra Human Welfare Foundation (panchvaktrawelfarefoundation) — serving humanity, creating hope, and supporting underprivileged children and families across India.",
+      },
+      {
+        name: "keywords",
+        content:
+          "panchvaktrawelfarefoundation, Panchvaktra Human Welfare Foundation, Panchvaktra Foundation, NGO India",
       },
     ],
     links: [
