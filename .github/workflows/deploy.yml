@@ -31,10 +31,12 @@ jobs:
         run: npm install --legacy-peer-deps
       - name: Build project
         run: npm run build
+      - name: Prepare static fallback
+        run: cp dist/client/index.html dist/client/404.html || cp dist/index.html dist/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./panchvaktra-foundation/dist
+          path: ./panchvaktra-foundation/dist/client
 
   deploy:
     environment:
