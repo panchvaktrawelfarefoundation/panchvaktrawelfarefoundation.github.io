@@ -31,6 +31,10 @@ jobs:
         run: npm install --legacy-peer-deps
       - name: Build project
         run: npm run build
+      - name: Fix asset paths for subfolder
+        run: |
+          find dist -type f \( -name "*.html" -o -name "*.js" -o -name "*.css" \) -exec sed -i -E 's|(src|href)="/([^/])|\1="/panchvaktrawelfarefoundation/\2|g' {} +
+          find dist -type f \( -name "*.html" -o -name "*.js" -o -name "*.css" \) -exec sed -i 's|/panchvaktrawelfarefoundation/panchvaktrawelfarefoundation/|/panchvaktrawelfarefoundation/|g' {} +
       - name: Prepare static fallback
         run: cp dist/client/index.html dist/client/404.html || cp dist/index.html dist/404.html
       - name: Upload artifact
