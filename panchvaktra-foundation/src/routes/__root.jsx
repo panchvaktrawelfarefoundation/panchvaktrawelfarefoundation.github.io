@@ -13,6 +13,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        name: "google-site-verification",
+        content: "RHD3Qoq_5IwT7z8_bgMvftQfC00x-UMw7QkpD-980tc",
+      },
       { title: "Panchvaktra Human Welfare Foundation" },
       {
         name: "description",
@@ -55,6 +59,10 @@ function RootDocument({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta
+          name="google-site-verification"
+          content="RHD3Qoq_5IwT7z8_bgMvftQfC00x-UMw7QkpD-980tc"
+        />
         <HeadContent />
       </head>
       <body data-react-root="true">
